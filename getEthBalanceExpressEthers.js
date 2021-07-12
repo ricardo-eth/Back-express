@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-import { InfuraProvider } from "@ethersproject/providers";
 
 // ID INFURA
 require("dotenv").config();
