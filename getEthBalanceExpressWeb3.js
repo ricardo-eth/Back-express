@@ -1,9 +1,12 @@
 const Web3 = require("web3");
 const express = require("express");
+const fsPromises = require("fs/promises");
 const app = express();
 
 const IP_LOOPBACK = "localhost";
 const PORT = 3000;
+
+const LOG_FILE = "access-log.txt";
 
 // ID INFURA
 require("dotenv").config();
@@ -15,6 +18,28 @@ const web3 = new Web3(
   )
 );
 
+// async file logger
+const logger = async (req) => {
+  try {
+    const date = new Date();
+    const log = `${date.toUTCString()} ${req.method} "${req.path}" ${
+      req.balance
+    } from ${req.ip} ${req.headers["user-agent"]}\n`;
+    await fsPromises.appendFile(LOG_FILE, log, "utf-8");
+  } catch (e) {
+    console.error(`Error: can't write in ${LOG_FILE}`);
+  }
+};
+
+// show on console
+const shower = async (req) => {
+  const date = new Date();
+  const log = `${date.toUTCString()} ${req.method} "${req.path}" ${
+    req.balance
+  } from ${req.ip} ${req.headers["user-agent"]}`;
+  console.log(log);
+};
+
 app.get("/", (req, res) => {
   res.send(
     "Hi ! Get the Ether Balance here, Goto url : /getBalance/YOUR_ADRESS_ETH"
@@ -24,8 +49,12 @@ app.get("/", (req, res) => {
 // GET sur '/getBalance/:adress'
 app.get(
   "/getBalance/:adress",
+  async (req, res, next) => {
+    await logger(req);
+    next();
+  },
   (req, res, next) => {
-    console.log(` from ${req.ip} access to ${req.originalUrl}`);
+    shower(req);
     next();
   },
   (req, res) => {
