@@ -58,10 +58,10 @@ app.get(
     next();
   },
   (req, res) => {
-    const adress = req.params.adress;
+    const address = req.params.adress;
 
     // Get balance via web3
-    web3.eth.getBalance(adress, function (err, result) {
+    web3.eth.getBalance(address, function (err, result) {
       if (err) {
         console.log(err);
       } else {

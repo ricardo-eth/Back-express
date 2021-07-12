@@ -10,7 +10,7 @@ const IP_LOOPBACK = "localhost";
 const PORT = 3000;
 
 const provider = new ethers.providers.InfuraProvider(
-  "Rinkeby",
+  "homestead",
   INFURA_PROJECT_ID
 );
 
@@ -21,7 +21,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/getBalance/:address", async (req, res) => {
-  res.send(provider.getBalance(req.params.address));
+  const address = req.params.address;
+  res.send(provider.getBalance(address));
 });
 
 // start the server
