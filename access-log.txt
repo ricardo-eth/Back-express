@@ -1,0 +1,2 @@
+Tue, 13 Jul 2021 16:29:21 GMT GET "/" from 127.0.0.1 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36
+Tue, 13 Jul 2021 16:30:09 GMT GET "/info" from 127.0.0.1 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36
