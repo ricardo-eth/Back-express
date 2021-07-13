@@ -13,7 +13,7 @@ const IP_LOOPBACK = "localhost";
 const PORT = 3333;
 
 //
-const LOG_FILE = "access-log.txt";
+const LOG_FILE = "logs/access-log.txt";
 
 const logger = async (req) => {
   try {
