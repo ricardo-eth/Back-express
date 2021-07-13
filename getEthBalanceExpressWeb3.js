@@ -4,7 +4,7 @@ const fsPromises = require("fs/promises");
 const app = express();
 
 const IP_LOOPBACK = "localhost";
-const PORT = 3000;
+const PORT = 3333;
 
 const LOG_FILE = "access-log.txt";
 
